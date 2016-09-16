@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html lang="en-US">
+	<head>
+    <meta charset="utf-8">
+		<title>Job Vacancy Board - find the best jobs</title>
+		<%= stylesheet_link_tag '/assets/application.css' %>
+	</head>
+	<body>
+		<div class="container">
+      <div class="masthead">
+      	<div class="container">
+      	<div class="app-title">
+      	<h1>Job Vacancy Board</h1>
+      	</div>
+      	<div class="profile"> 
+						<% if signed_in? %>
+							<%= current_user.email %>
+						<% end %>
+				</div>
+				</div>
+        <div class="navbar">
+          <div class="navbar-inner">
+            <div class="container">
+              <ul class="nav">
+                <li><%= link_to 'Home', url_for(:home, :index) %></li>
+                <li><%= link_to 'Job offers', url_for(:job_offers, :latest) %></li>
+                
+                <% if signed_in? %>	
+                <li><%= link_to 'New Offer', url_for(:job_offers, :new) %></li>
+                <li><%= link_to 'My Offers', url_for(:job_offers, :my) %></li>
+
+								<% end %>
+								<% if signed_in? %>	
+								<li><%= link_to 'Logout', url_for(:sessions, :destroy) %></li>
+								<% else%>	
+								<li><%= link_to 'Login', url_for(:sessions, :login) %></li>
+								<% end %>
+              </ul>
+            </div>
+          </div>
+        </div><!-- /.navbar -->
+      </div>
+
+      <div class="container">
+			  <div>
+			    <%= [:error, :warning, :success, :notice].map { |type| flash_tag(type, :class => "alert alert-#{type} fade in", :id =>'flashMessage', :bootstrap => true) }.join.html_safe %>
+			  </div>
+
+      	<%= yield %>
+
+      </div>
+      <!-- footer -->
+      <div class="footer">
+      	<hr/>
+        <p>Job Vacancy Board by NicoPaez | 2014</p>
+      </div>
+
+    </div> 
+
+		<%= javascript_include_tag '/assets/application' %> 
+		</body>
+</html>
