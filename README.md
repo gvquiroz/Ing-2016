@@ -1,8 +1,6 @@
 Job Vacancy Application
 =======================
 
-[![Build Status](https://snap-ci.com/nicopaez/job-vacancy/branch/develop/build_image)](https://snap-ci.com/nicopaez/job-vacancy/branch/develop)
-
 Once you have clone this repository, follow these steps to start working:
 
 * Run **_bundle install --without staging production_**, to install all application dependencies
@@ -16,3 +14,6 @@ Some conventions to work on it:
 * Add descriptive commits messages in English to every commit
 * Write code and comments in English
 * Use REST routes
+
+Forked from Nico Paez 
+Untref Software Engineering 2016.
