@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/gvquiroz/Ing-2016.svg?branch=master)](https://travis-ci.org/gvquiroz/Ing-2016)
+
 Job Vacancy Application
 =======================
 
