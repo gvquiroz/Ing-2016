@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/gvquiroz/Ing-2016.svg?branch=master)](https://travis-ci.org/gvquiroz/Ing-2016)
+[![Build Status](https://snap-ci.com/gvquiroz/Ing-2016/branch/master/build_image)](https://snap-ci.com/gvquiroz/Ing-2016/branch/master)
 
 Job Vacancy Application
 =======================
