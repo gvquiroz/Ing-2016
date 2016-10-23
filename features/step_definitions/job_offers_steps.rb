@@ -56,3 +56,7 @@ end
 Given(/^I save the modification$/) do
   click_button('Save')
 end
+
+When(/^I fill the Due Date "(.*?)"$/) do |date|
+  fill_in('job_offer[due_date]', :with => date)
+end
