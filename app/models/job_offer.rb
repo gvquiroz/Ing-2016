@@ -8,6 +8,7 @@ class JobOffer
 	property :description, String
   property :created_on, Date
   property :updated_on, Date
+	property :due_date, Date
   property :is_active, Boolean, :default => true
 	belongs_to :user
 
