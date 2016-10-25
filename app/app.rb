@@ -15,11 +15,11 @@ module JobVacancy
 
     set :delivery_method, :smtp => {
      :address         => 'smtp.gmail.com',
-     :port            => '465',
+     :port            => '587',
      :user_name       => 'infojobvacancy2016@gmail.com',
      :password        => 'qwerty22',
      :authentication  => :login, # :plain, :login, :cram_md5, no auth by default
-     :enable_starttls_auto => true,
+     :domain          => "gmail.com",
    }
 
 
