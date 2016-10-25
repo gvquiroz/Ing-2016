@@ -26,6 +26,10 @@ class JobOffer
 		JobOffer.all(:is_active => true)
 	end
 
+	def self.all_valid
+		JobOffer.all(:due_date.gt => Date.today)
+	end
+
 	def self.find_by_owner(user)
 		JobOffer.all(:user => user)
 	end
