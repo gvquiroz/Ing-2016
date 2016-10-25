@@ -6,7 +6,7 @@ JobVacancy::App.controllers :job_offers do
   end    
 
   get :index do
-    @offers = JobOffer.all_active
+    @offers = JobOffer.all_valid
     render 'job_offers/list'
   end  
 
@@ -16,7 +16,7 @@ JobVacancy::App.controllers :job_offers do
   end
 
   get :latest do
-    @offers = JobOffer.all_active
+    @offers = JobOffer.all_valid
     render 'job_offers/list'
   end
 
@@ -34,7 +34,7 @@ JobVacancy::App.controllers :job_offers do
   end
 
   post :search do
-    @offers = JobOffer.all(:title.like => "%#{params[:q]}%")
+    @offers = JobOffer.all(:title.like => "%#{params[:q]}%",:due_date.gt => Date.today)
     render 'job_offers/list'
   end
 
