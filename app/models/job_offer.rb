@@ -23,6 +23,7 @@ class JobOffer
 	end
 
 	def self.all_active
+		JobOffer.deactivate_old_offers
 		JobOffer.all(:is_active => true)
 	end
 
@@ -31,13 +32,11 @@ class JobOffer
 	end
 
 	def self.deactivate_old_offers
-		active_offers = JobOffer.all(:is_active => true)
+		due_offers = JobOffer.all(:due_date.lt => Date.today)
 
-		active_offers.each do | offer |
-			if (Date.today - offer.updated_on) >= 30
-				offer.deactivate
-				offer.save
-			end
+		due_offers.each do | offer |
+			offer.deactivate
+			offer.save
 		end
 	end
 
