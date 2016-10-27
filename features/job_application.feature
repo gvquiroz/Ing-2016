@@ -10,3 +10,4 @@ Feature: Job Application
     Given I access the offers list page
     When I apply
     Then I should receive a mail with offerer info
+
