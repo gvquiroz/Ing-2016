@@ -9,12 +9,22 @@ module JobVacancy
 
     enable :sessions
     
-    set :delivery_method, :file => {
-      :location => "#{Padrino.root}/tmp/emails",
-    }
+    #set :delivery_method, :file => {
+    #  :location => "#{Padrino.root}/tmp/emails",
+    #}
+
+    set :delivery_method, :smtp => {
+     :address         => 'smtp.gmail.com',
+     :port            => '587',
+     :user_name       => 'infojobvacancy2016@gmail.com',
+     :password        => 'qwerty22',
+     :authentication  => :login, # :plain, :login, :cram_md5, no auth by default
+     :domain          => "gmail.com",
+   }
+
 
     ##
-    # Caching support
+    # Caching    support:enable_starttls_auto => true
     #
     # register Padrino::Cache
     # enable :caching

@@ -24,10 +24,11 @@ end
 When(/^I apply$/) do
   click_link 'Apply'
   fill_in('job_application[applicant_email]', :with => 'applicant@test.com')
-  click_button('Apply')
+  #click_button('Apply')
 end
 
 Then(/^I should receive a mail with offerer info$/) do
+<<<<<<< HEAD
   mail_store = "#{Padrino.root}/tmp/emails"
   file = File.open("#{mail_store}/applicant@test.com", "r")
   content = file.read
@@ -43,3 +44,7 @@ Then(/^I should not see "(.*?)" in the offers list page$/) do |content|
   visit '/job_offers/job_offers'
   page.should_not have_content(content)
 end
+=======
+  
+end
+>>>>>>> emailSender
