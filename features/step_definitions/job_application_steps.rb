@@ -17,10 +17,6 @@ Given(/^a "(.*?)" offer has pass the due date$/) do | job_title |
   @job_offer.save
 end
 
-Given(/^I access the offers list page$/) do
-  visit '/job_offers'
-end
-
 When(/^I apply$/) do
   click_link 'Apply'
   fill_in('job_application[applicant_email]', :with => 'applicant@test.com')
@@ -38,8 +34,11 @@ Then(/^I should receive a mail with offerer info$/) do
   #content.include?(@job_offer.owner.name).should be true
 end
 
-Then(/^I should not see "(.*?)" in the offers list page$/) do |content|
+Given(/^I access the offers list page$/) do
+  visit '/job_offers'
+end
 
+Then(/^I should not see "(.*?)" in the offers list page$/) do |content|
   visit '/job_offers/job_offers'
   page.should_not have_content(content)
 end
