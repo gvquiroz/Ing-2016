@@ -5,5 +5,5 @@ Feature: Active Job Offers list
 
   Scenario: Current Job Offers
     Given a "Web Programmer" offer has pass the due date
-    Given I access the offers list page
+    When I access the offers list page
     Then I should not see "Web Programmer" in the offers list page

@@ -50,4 +50,13 @@ JobVacancy::App.mailer :notification do
     render 'notification/contant_info_email'
   end
 
+    email :candidate_info_email do | job_application |
+    from 'infojobvacancy2016@gmail.com'
+    to job_application.job_offer.owner.email
+    subject 'Job Application: Candidate information'
+    locals :job_offer => job_application.job_offer
+    content_type :plain
+    render 'notification/candidate_info_email'
+  end
+
 end
