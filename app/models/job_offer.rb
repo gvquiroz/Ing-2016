@@ -28,6 +28,7 @@ class JobOffer
 	end
 
 	def self.find_by_owner(user)
+		JobOffer.deactivate_old_offers
 		JobOffer.all(:user => user)
 	end
 
@@ -42,6 +43,7 @@ class JobOffer
 
 	def activate
 		self.is_active = true
+		self.due_date = Date.today+30
 	end
 
 	def deactivate
