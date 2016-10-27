@@ -36,6 +36,7 @@ describe JobApplication do
 	  it 'should deliver contact info notification' do
 	  	ja = JobApplication.create_for('applicant@test.com', JobOffer.new)
 	  	JobVacancy::App.should_receive(:deliver).with(:notification, :contact_info_email, ja)
+	  	JobVacancy::App.should_receive(:deliver).with(:notification, :candidate_info_email, ja)
 	  	ja.process
 	  end
 
