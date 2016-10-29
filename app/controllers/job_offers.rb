@@ -80,7 +80,7 @@ JobVacancy::App.controllers :job_offers do
     @job_offer = JobOffer.get(params[:offer_id])
     @job_offer.activate
     if @job_offer.save
-      flash[:success] = 'Offer activated'
+      flash[:success] = 'Offer reactivated for 30 days'
       redirect '/job_offers/my'
     else
       flash.now[:error] = 'Operation failed'
