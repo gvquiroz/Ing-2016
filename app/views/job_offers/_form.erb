@@ -1,9 +1,9 @@
-	<%= f.label :title %>
+  <%= f.label :title %>
  	<%= f.text_field :title, :class => "input-block-level" %>
   <%= f.label :location %>
   <%= f.text_field :location, :class => "input-block-level" %>
 	<%= f.label :due_date %>
-	<%= f.text_field :due_date, :class => "input-block-level" %>
+	<%= f.text_field :due_date, placeholder: "yyyy-mm-dd", :class => "input-block-level" %>
   <%= f.label :description %>
   <%= f.text_area :description, :class => "input-block-level" %>
 
