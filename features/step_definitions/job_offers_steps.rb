@@ -28,7 +28,6 @@ Then(/^I should see "(.*?)" in My Offers$/) do |content|
   page.should have_content(content)
 end
 
-
 Then(/^I should not see "(.*?)" in My Offers$/) do |content|
   visit '/job_offers/my'
   page.should_not have_content(content)
