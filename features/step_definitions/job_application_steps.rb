@@ -13,21 +13,19 @@ Given(/^Today's date "(.*?)"$/) do | date_today |
 end
 
 When(/^I activate$/) do
-  pending
-  @job_offer.due_date = "2016-12-11"
-  click_button 'Activate'
+  click_button('Activate')
 end
 
-Then(/^I should see the new date "(.*?)" in My Offers$/) do |content|
-  visit '/job_offers/my'
-  page.should have_content(content)
+
+Then(/^I you should see the new day with an extra month in My Offers$/) do
+  new_date = Date.today+30
+  page.should have_content(new_date)
 end
 
-When(/^I apply$/) do
-  click_link 'Apply'
-  fill_in('job_application[applicant_email]', :with => 'applicant@test.com')
-  #click_button('Apply')
-end
+#When(/^I apply$/) do
+#  click_link('Apply')
+  #fill_in('job_application[applicant_email]', :with => 'applicant@test.com')
+#end
 
 Then(/^I should receive a mail with offerer info$/) do
   pending
@@ -68,4 +66,8 @@ end
 Then(/^I should not see "(.*?)" in the offers list page$/) do |content|
   visit '/job_offers/job_offers'
   page.should_not have_content(content)
+end
+
+When(/^I access the my offer page$/) do
+  visit '/job_offers/my'
 end
