@@ -14,12 +14,12 @@ end
 
 When(/^I activate$/) do
   pending
-  fill_in('job_offer[due_date]', :with => "2016-12-11")
+  @job_offer.due_date = "2016-12-11"
   click_button 'Activate'
 end
 
 Then(/^I should see the new date "(.*?)" in My Offers$/) do |content|
-	visit '/job_offers/my'
+  visit '/job_offers/my'
   page.should have_content(content)
 end
 
