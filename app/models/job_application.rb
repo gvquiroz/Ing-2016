@@ -10,9 +10,19 @@ class JobApplication
 		app
 	end
 
+	def self.create_for_activate(offer)
+		app_activate = JobApplication.new
+		app_activate.job_offer = offer
+		app_activate
+	end
+
 	def process
     JobVacancy::App.deliver(:notification, :contact_info_email, self)
     JobVacancy::App.deliver(:notification, :candidate_info_email, self)
+  end
+
+	def offer_reactivated_email
+		JobVacancy::App.deliver(:notification, :offer_reactivated_info_email, self)
   end
 
 end
