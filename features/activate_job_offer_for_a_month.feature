@@ -7,7 +7,10 @@ Feature: Activate Job Offer
   	Given I am logged in as job offerer
 
   Scenario: Activate an offer for a month
-    Given a offer has is active in "false"
-    Given Today's date "2016-11-11"
-    When I activate
-    Then I should see the new date "2016-12-11" in My Offers
+    Given I access the new offer page
+    When I fill the title with "Ruby vacancy"
+    And I fill the Due Date "2016-10-11"
+    And confirm the new offer
+    And I access the my offer page
+    And I activate
+    Then I you should see the new day with an extra month in My Offers
