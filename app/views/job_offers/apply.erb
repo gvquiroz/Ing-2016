@@ -4,8 +4,10 @@
 <p>Please enter your email address to receive the contanct information for this offer.</p>
 <% form_for(@job_application, "/job_offers/apply/#{@job_offer.id}") do |f| %>
 
-  <%= f.label :applicant_email %>
+  	<%= f.label :applicant_email %>
  	<%= f.text_field :applicant_email %>
+ 	<%= f.label :link_cv %>
+ 	<%= f.text_field :link_cv %>
 
 	<hr/>
   <%= f.submit "Apply", :class => "btn btn-primary" %>

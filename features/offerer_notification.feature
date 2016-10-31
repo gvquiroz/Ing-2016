@@ -8,4 +8,4 @@ Feature: Offerer notification
    
   Scenario: A candidate applies to a job offer
     When a candidate apply
-    Then I should recive an mail with candidate info
+    Then I should recive an mail with candidate cv link

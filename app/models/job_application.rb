@@ -2,11 +2,13 @@ class JobApplication
 
 	attr_accessor :applicant_email
 	attr_accessor :job_offer
+	attr_accessor :link_cv
 
-	def self.create_for(email, offer)
+	def self.create_for(email, offer, cv)
 		app = JobApplication.new
 		app.applicant_email = email
 		app.job_offer = offer
+		app.link_cv = cv
 		app
 	end
 
