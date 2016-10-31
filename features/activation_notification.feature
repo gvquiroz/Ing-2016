@@ -8,9 +8,10 @@ Feature: Activation notification
 
   Scenario: Receive mail after an offer is activated
     Given I access the new offer page
-    When I fill the title with "Ruby vacancy"
+    When I fill the title with "Ruby Jr"
     And I fill the Due Date "2016-10-11"
     And confirm the new offer
     And I access the my offer page
     When I activate
-    Then I should receive an mail with offer info
+    Then I should receive an email from "infojobvacancy2016@gmail.com"
+    And I should see "Offer Reactivated" in the email subject
