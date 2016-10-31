@@ -43,7 +43,8 @@ JobVacancy::App.controllers :job_offers do
   post :apply, :with => :offer_id do
     @job_offer = JobOffer.get(params[:offer_id])
     applicant_email = params[:job_application][:applicant_email]
-    @job_application = JobApplication.create_for(applicant_email, @job_offer, 'www.google.com')
+    link = params[:job_application][:link_cv]
+    @job_application = JobApplication.create_for(applicant_email, @job_offer, link)
     @job_application.process
     flash[:success] = 'Contact information sent.'
     redirect '/job_offers'
