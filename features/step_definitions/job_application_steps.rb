@@ -22,10 +22,11 @@ Then(/^I you should see the new day with an extra month in My Offers$/) do
   page.should have_content(new_date)
 end
 
-#When(/^I apply$/) do
-#  click_link('Apply')
+When(/^I apply$/) do
+  pending
+  #click_link('Apply')
   #fill_in('job_application[applicant_email]', :with => 'applicant@test.com')
-#end
+end
 
 Then(/^I should receive a mail with offerer info$/) do
   pending

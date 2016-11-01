@@ -48,4 +48,13 @@ describe JobApplication do
 
 	end
 
+	describe 'offer reactivated email' do
+
+		it 'should deliver activate offer info notification' do
+			activate_offer = JobApplication.create_for_activate(JobOffer.new)
+			JobVacancy::App.should_receive(:deliver).with(:notification, :offer_reactivated_info_email, activate_offer)
+			activate_offer.offer_reactivated_email
+		end
+	end
+
 end
