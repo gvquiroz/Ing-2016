@@ -13,6 +13,7 @@ class JobOffer
 	belongs_to :user
 
 	validates_presence_of :title
+	validates_primitive_type_of :due_date
 
 	def owner
 		user
@@ -50,4 +51,11 @@ class JobOffer
 		self.is_active = false
 	end
 
+	def validate?(date)
+		if(date.match(/\d{4}-\d{2}-\d{2}/) && Date.strptime(date, '%Y-%m-%d'))
+			return true
+		else
+			return false
+		end
+	end
 end

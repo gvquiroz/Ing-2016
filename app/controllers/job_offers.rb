@@ -66,10 +66,14 @@ JobVacancy::App.controllers :job_offers do
 
   post :update, :with => :offer_id do
     @job_offer = JobOffer.get(params[:offer_id])
+    date = params[:job_offer][:due_date]
     @job_offer.update(params[:job_offer])
     if @job_offer.save
       flash[:success] = 'Offer updated'
       redirect '/job_offers/my'
+   elsif @job_offer.validate?(date) == false
+      flash.now[:error] = 'Invalid date'
+      render 'job_offers/edit'
     else
       flash.now[:error] = 'Title is mandatory'
       render 'job_offers/edit'
