@@ -13,7 +13,8 @@ class JobOffer
 	belongs_to :user
 
 	validates_presence_of :title
-	validates_primitive_type_of :due_date
+	validates_presence_of :location
+	validates_presence_of :due_date
 
 	def owner
 		user
