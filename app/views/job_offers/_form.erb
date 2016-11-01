@@ -3,7 +3,7 @@
   <%= f.label :location %>
   <%= f.text_field :location, :class => "input-block-level" %>
 	<%= f.label :due_date %>
-	<%= f.text_field :due_date, placeholder: "yyyy-mm-dd", :class => "input-block-level" %>
+  <input id="date" name="job_offer[due_date]" type="date"/>
   <%= f.label :description %>
   <%= f.text_area :description, :class => "input-block-level" %>
 
