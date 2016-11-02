@@ -3,7 +3,7 @@
   <%= f.label :location, :caption => "Location *"%>
   <%= f.text_field :location, :class => "input-block-level" %>
 	<%= f.label :due_date , :caption => "Due date *"%>
-  <input id="date" name="job_offer[due_date]" type="date"/>
+  <input id="date" name="job_offer[due_date]" type="date" min="2015-01-01" max="2060-01-01"/>
   <%= f.label :description, :caption => "Description"%>
   <%= f.text_area :description, :class => "input-block-level" %>
   <p>* Required fields</p>
