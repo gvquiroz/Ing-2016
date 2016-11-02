@@ -8,5 +8,5 @@ Feature: Job Application
 
   Scenario: Apply to job offer
     Given I access the offers list page
-    When a candidate applies
+    When I apply
     Then I should receive a mail with offerer info
