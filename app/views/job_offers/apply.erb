@@ -1,13 +1,34 @@
 <h1>Job Application</h1>
 
-	
-<p>Please enter your email address to receive the contanct information for this offer.</p>
+
+<p>Please complete to apply for this offer.</p>
+<br>
 <% form_for(@job_application, "/job_offers/apply/#{@job_offer.id}") do |f| %>
 
-<%= f.label :applicant_email %>
-<%= f.text_field :applicant_email %>
+<%= f.text_field :first_name, placeholder: "First Name*" %>
+
+<%= f.text_field :last_name, placeholder: "Last Name*" %>
+
+<br/>
+
+<%= f.text_field :applicant_email, placeholder: "Email Address*" %>
+
+<p>Enter a link to your cv or write a short bio</p>
+
 <%= f.label :link_cv %>
+
 <%= f.text_field :link_cv %>
+<br/>
+
+<form action='/upload' enctype="multipart/form-data" method='POST'>
+    <input name="file" type="file" />
+    <input type="submit" value="Upload" />
+</form>
+
+<%= f.label :short_bio %>
+<%= f.text_area :short_bio, placeholder: "Write your application covering message here", :class => "input-block-level" %>
+
+<p>* Required fields</p>
 
 <hr/>
 <%= f.submit "Apply", :class => "btn btn-primary" %>
