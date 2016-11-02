@@ -63,7 +63,7 @@ describe JobOffer do
 			expect(old_offer.is_active).to eq false
 		end
 
-		it 'should not deactivate old offers' do
+		it 'should not deactivate valid offer' do
 			JobOffer.should_receive(:all).and_return([active_offer])
 			JobOffer.deactivate_old_offers
 			expect(old_offer.is_active).to eq true
