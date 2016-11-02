@@ -68,6 +68,6 @@ Then(/^I should not see "(.*?)" in the offers list page$/) do |content|
   page.should_not have_content(content)
 end
 
-When(/^I access the my offer page$/) do
+When(/^I access the my offers page$/) do
   visit '/job_offers/my'
 end
