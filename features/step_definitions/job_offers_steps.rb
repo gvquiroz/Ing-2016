@@ -19,6 +19,10 @@ When(/^I fill the title with "(.*?)"$/) do |offer_title|
   fill_in('job_offer[title]', :with => offer_title)
 end
 
+When(/^I fill the location with "(.*?)"$/) do |offer_location|
+  fill_in('job_offer[location]', :with => offer_location)
+end
+
 When(/^confirm the new offer$/) do
   click_button('Create')
 end
@@ -37,6 +41,8 @@ Given(/^I have "(.*?)" offer in My Offers$/) do |offer_title|
   JobOffer.all.destroy
   visit '/job_offers/new'
   fill_in('job_offer[title]', :with => offer_title)
+  fill_in('job_offer[location]', :with => "Villa Urquiza")
+  fill_in('job_offer[due_date]', :with => "2018-10-10")
   click_button('Create')
 end
 
@@ -50,6 +56,8 @@ end
 
 Given(/^I set title to "(.*?)"$/) do |new_title|
   fill_in('job_offer[title]', :with => new_title)
+  fill_in('job_offer[location]', :with => "Villa Urquiza")
+  fill_in('job_offer[due_date]', :with => "2018-10-10")
 end
 
 Given(/^I save the modification$/) do

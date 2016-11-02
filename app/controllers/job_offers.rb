@@ -50,6 +50,7 @@ JobVacancy::App.controllers :job_offers do
     redirect '/job_offers'
   end
 
+#This code might be better
   post :create do
     @job_offer = JobOffer.new(params[:job_offer])
     @job_offer.owner = current_user
@@ -59,8 +60,14 @@ JobVacancy::App.controllers :job_offers do
       end
       flash[:success] = 'Offer created'
       redirect '/job_offers/my'
-    else
+    elsif params[:job_offer][:title].length == 0
       flash.now[:error] = 'Title is mandatory'
+      render 'job_offers/new'
+    elsif params[:job_offer][:location].length == 0
+      flash.now[:error] = 'Location is mandatory'
+      render 'job_offers/new'
+    elsif params[:job_offer][:due_date].length == 0
+      flash.now[:error] = 'Date is mandatory'
       render 'job_offers/new'
     end
   end
@@ -71,8 +78,14 @@ JobVacancy::App.controllers :job_offers do
     if @job_offer.save
       flash[:success] = 'Offer updated'
       redirect '/job_offers/my'
-    else
+    elsif params[:job_offer][:title].length == 0
       flash.now[:error] = 'Title is mandatory'
+      render 'job_offers/edit'
+    elsif params[:job_offer][:location].length == 0
+      flash.now[:error] = 'Location is mandatory'
+      render 'job_offers/edit'
+    elsif params[:job_offer][:due_date].length == 0
+      flash.now[:error] = 'Date is mandatory'
       render 'job_offers/edit'
     end
   end
