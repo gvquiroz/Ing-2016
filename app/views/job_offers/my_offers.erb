@@ -30,14 +30,12 @@
 		<td>
 			<%= link_to 'Edit', url_for(:job_offers, :edit, :offer_id => offer.id), :title =>"Edit offer" ,:class => "btn btn-primary" %>
 			<%- form_tag url(:job_offers, :destroy, :offer_id => offer.id), :method => :delete, :style => 'display:inline' do %>
-                <a href="delete_methode_link" onclick="return confirm('Are you sure you want to Delete this offer?');">
-									<button type='submit' title="Delete offer" rel='tooltip' class="btn btn-secondary" >Delete
-                </button></a>
-
+    				<button type='submit' title="Delete offer" rel='tooltip' class="btn btn-secondary" >Delete
+            		</button>
        <% end %>
        <% if not offer.is_active %>
 				<%- form_tag url(:job_offers, :activate, :offer_id => offer.id), :method => :put, :style => 'display:inline' do %>
-	                <button type='submit' title="Activate offer" rel='tooltip' class="btn btn-secondary" >Activate for 30 days from now
+	                <button type='submit' title="Activate for 30 days from now" rel='tooltip' class="btn btn-secondary" >Activate
 	                </button>
 	       <% end %>
        <% end %>
