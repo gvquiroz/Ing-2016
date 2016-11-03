@@ -6,31 +6,24 @@
 <% form_for(@job_application, "/job_offers/apply/#{@job_offer.id}") do |f| %>
 
 <%= f.text_field :first_name, placeholder: "First Name*" %>
-
 <%= f.text_field :last_name, placeholder: "Last Name*" %>
 
 <br/>
 
-<%= f.text_field :applicant_email, placeholder: "Email Address*" %>
+<%= f.email_field :applicant_email, placeholder: "Email Address*" %>
 
 <p>Enter a link to your cv or write a short bio</p>
 
 <%= f.label :link_cv %>
-
-<%= f.text_field :link_cv %>
+<%= f.url_field :link_cv, :class => 'long'%>
 <br/>
-
-<form action='/upload' enctype="multipart/form-data" method='POST'>
-    <input name="file" type="file" />
-    <input type="submit" value="Upload" />
-</form>
 
 <%= f.label :short_bio %>
 <%= f.text_area :short_bio, placeholder: "Write your application covering message here", :class => "input-block-level" %>
 
 <p>* Required fields</p>
 
-<hr/>
+<br/>
 <%= f.submit "Apply", :class => "btn btn-primary" %>
 <%= link_to 'Cancel', url_for(:job_offers, :latest), :class => "btn btn-secondary" %>
 <% end %>

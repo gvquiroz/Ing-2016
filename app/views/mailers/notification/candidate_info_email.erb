@@ -1,11 +1,20 @@
-Job Vacancy Board
-=================
+Job Vacancy Board<br>
+=================<br>
+<br>
 
-Hello <%= job_offer.owner.name %> !
-Amazing news! candidate had appied to your following offer:
-
-* Title: <%= job_offer.title %>
-* Location: <%= job_offer.location %>
-* Description: <%= job_offer.description %>
-
-You can view the candidate's cv at: <%= link_cv %>
+Hello <%= job_offer.owner.name %> !<br>
+<br>
+Amazing news! A candidate have applied to the following offer:
+<br>
+<br>
+* Title: <%= job_offer.title %><br>
+* Location: <%= job_offer.location %><br>
+* Description: <%= job_offer.description %><br>
+<br>
+Candidate Information:
+<br>
+* First Name: <%= first_name %><br>
+* Last Name: <%= last_name %><br>
+* Email: <%= applicant_email %><br>
+* CV: <%= link_cv %><br>
+* Short Bio <%= short_bio %><br>
