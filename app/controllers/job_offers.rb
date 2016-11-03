@@ -42,15 +42,23 @@ JobVacancy::App.controllers :job_offers do
 
   post :apply, :with => :offer_id do
     @job_offer = JobOffer.get(params[:offer_id])
+    @job_application = JobApplication.new
+
     applicant_email = params[:job_application][:applicant_email]
     first_name = params[:job_application][:first_name]
     last_name = params[:job_application][:last_name]
     link = params[:job_application][:link_cv]
     short_bio = params[:job_application][:short_bio]
-    @job_application = JobApplication.create_for(applicant_email, @job_offer, link, first_name, last_name, short_bio)
-    @job_application.process
-    flash[:success] = 'Contact information sent.'
-    redirect '/job_offers'
+
+    if (first_name.blank? || last_name.blank? || applicant_email.blank?) || (link.blank? && short_bio.blank?)
+      flash.now[:error] = 'Please complete the required fields'
+      render 'job_offers/apply'
+    else
+      @job_application = JobApplication.create_for(applicant_email, @job_offer, link, first_name, last_name, short_bio)
+      @job_application.process
+      flash[:success] = 'Contact information sent.'
+      redirect '/job_offers'
+    end
   end
 
 #This code might be better

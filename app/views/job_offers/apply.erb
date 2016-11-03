@@ -1,24 +1,26 @@
 <h1>Job Application</h1>
 
 
-<p>Please complete to apply for this offer.</p>
+<h5>Please complete to apply for this offer.</h5>
 <br>
 <% form_for(@job_application, "/job_offers/apply/#{@job_offer.id}") do |f| %>
 
-<%= f.text_field :first_name, placeholder: "First Name*" %>
-<%= f.text_field :last_name, placeholder: "Last Name*" %>
+<p>Full Name *</p>
 
-<br/>
+<DIV ALIGN=left><%= f.text_field :first_name, placeholder: "First Name *" %>
+                <%= f.text_field :last_name, placeholder: "Last Name *" %></DIV>
 
-<%= f.email_field :applicant_email, placeholder: "Email Address*" %>
+
+<%= f.label :applicant_email, :caption => "Email Address *"%>
+<%= f.email_field :applicant_email, placeholder: "applicant@example.com", :class => 'long'%>
 
 <p>Enter a link to your cv or write a short bio</p>
 
-<%= f.label :link_cv %>
+<%= f.label :link_cv, :caption => "Link CV"%>
 <%= f.url_field :link_cv, :class => 'long'%>
 <br/>
 
-<%= f.label :short_bio %>
+<%= f.label :short_bio, :caption => "Short Bio" %>
 <%= f.text_area :short_bio, placeholder: "Write your application covering message here", :class => "input-block-level" %>
 
 <p>* Required fields</p>
