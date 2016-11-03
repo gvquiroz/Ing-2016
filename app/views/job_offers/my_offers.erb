@@ -11,7 +11,7 @@
 	<% @offers.each do | offer| %>
 
 	<tr>
-			<td>
+		<td>
 			<%= offer.title %>
 		</td>
 		<td>
@@ -37,7 +37,7 @@
        <% end %>
        <% if not offer.is_active %>
 				<%- form_tag url(:job_offers, :activate, :offer_id => offer.id), :method => :put, :style => 'display:inline' do %>
-	                <button type='submit' title="Activate offer" rel='tooltip' class="btn btn-secondary" >Activate
+	                <button type='submit' title="Activate offer" rel='tooltip' class="btn btn-secondary" >Activate for 30 days from now
 	                </button>
 	       <% end %>
        <% end %>

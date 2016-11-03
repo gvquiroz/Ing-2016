@@ -86,6 +86,7 @@ JobVacancy::App.controllers :job_offers do
   post :update, :with => :offer_id do
     @job_offer = JobOffer.get(params[:offer_id])
     @job_offer.update(params[:job_offer])
+    JobOffer.activate_if_needed
     if @job_offer.save
       flash[:success] = 'Offer updated'
       redirect '/job_offers/my'

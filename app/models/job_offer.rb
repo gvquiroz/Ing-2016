@@ -6,10 +6,10 @@ class JobOffer
 	property :title, String
 	property :location, String
 	property :description, String
-  property :created_on, Date
-  property :updated_on, Date
+ 	property :created_on, Date
+ 	property :updated_on, Date
 	property :due_date, Date
-  property :is_active, Boolean, :default => true
+  	property :is_active, Boolean, :default => true
 	belongs_to :user
 
 	validates_presence_of :title
@@ -39,6 +39,14 @@ class JobOffer
 
 		due_offers.each do | offer |
 			offer.deactivate
+			offer.save
+		end
+	end
+
+	def self.activate_if_needed
+		due_offers = JobOffer.all(:due_date.gt => Date.today)
+		due_offers.each do | offer |
+			offer.is_active = true
 			offer.save
 		end
 	end

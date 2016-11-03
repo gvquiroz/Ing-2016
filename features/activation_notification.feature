@@ -1,7 +1,7 @@
 Feature: Activation notification
   In order to get employees
   As a job offerer
-  I want to get an email notification when I activate an offer
+  I want to get an email notification when I activate an offer for 30 days
 
   Background:
     Given I am logged in as job offerer
