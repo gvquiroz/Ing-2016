@@ -54,7 +54,7 @@ JobVacancy::App.controllers :job_offers do
       flash.now[:error] = 'Please complete the required fields'
       render 'job_offers/apply'
     else
-      @job_application = JobApplication.create_for(applicant_email, @job_offer, link, first_name, last_name, short_bio)
+      @job_application = JobApplication.create_for(applicant_email, @job_offer, first_name, last_name, link, short_bio)
       @job_application.process
       flash[:success] = 'Contact information sent.'
       redirect '/job_offers'

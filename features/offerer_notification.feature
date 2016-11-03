@@ -5,7 +5,7 @@ Feature: Offerer notification
 
   Background:
   	Given only a "Web Programmer" offer exists in the offers list
-   
+
   Scenario: A candidate applies to a job offer
     When a candidate apply
-    Then I should recive an mail with candidate cv link
+    Then I should receive an mail with candidate cv link
