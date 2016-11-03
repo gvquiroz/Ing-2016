@@ -1,4 +1,4 @@
-When(/^I apply$/) do
+When(/^candidate applies an offer$/) do
   click_link 'Apply'
   fill_in('job_application[applicant_email]', :with => 'applicant@test.com')
   click_button('Apply')
@@ -16,6 +16,22 @@ Then(/^I should receive a mail with offerer info$/) do
   content.include?(@job_offer.owner.name).should be true
 end
 
-Then(/^I should recive an mail with candidate info$/) do
-  pending # express the regexp above with the code you wish you had
+Given(/^the candidate form is filled with "(.*?)"$/) do | candidate_email |
+  pending
+  visit '/job_offers/apply'
+  @job_application = JobApplication.new
+  @job_application.create_for(candidate_email, @job_offer, 'Kent','Beck','https://kentbeckblog.com','Programmer')
+
+end
+
+Then(/^I should receive an email from "(.*?)"$/) do | job_vacancy_email |
+  pending
+end
+
+And(/^I should see "(.*?)" in the email body$/) do | email |
+  pending
+end
+
+Then(/^I should see "(.*?)" in the email subject$/) do | offer_reactivated |
+  pending
 end

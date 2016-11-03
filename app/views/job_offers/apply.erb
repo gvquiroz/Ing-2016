@@ -1,15 +1,31 @@
 <h1>Job Application</h1>
 
-	
-<p>Please enter your email address to receive the contanct information for this offer.</p>
+
+<h5>Please complete to apply for this offer.</h5>
+<br>
 <% form_for(@job_application, "/job_offers/apply/#{@job_offer.id}") do |f| %>
 
-<%= f.label :applicant_email %>
-<%= f.text_field :applicant_email %>
-<%= f.label :link_cv %>
-<%= f.text_field :link_cv %>
+<p>Full Name *</p>
 
-<hr/>
+<DIV ALIGN=left><%= f.text_field :first_name, placeholder: "First Name *" %>
+                <%= f.text_field :last_name, placeholder: "Last Name *" %></DIV>
+
+
+<%= f.label :applicant_email, :caption => "Email Address *"%>
+<%= f.email_field :applicant_email, placeholder: "applicant@example.com", :class => 'long'%>
+
+<p>Enter a link to your cv or write a short bio</p>
+
+<%= f.label :link_cv, :caption => "Link CV"%>
+<%= f.url_field :link_cv, :class => 'long'%>
+<br/>
+
+<%= f.label :short_bio, :caption => "Short Bio" %>
+<%= f.text_area :short_bio, placeholder: "Write your application covering message here", :class => "input-block-level" %>
+
+<p>* Required fields</p>
+
+<br/>
 <%= f.submit "Apply", :class => "btn btn-primary" %>
 <%= link_to 'Cancel', url_for(:job_offers, :latest), :class => "btn btn-secondary" %>
 <% end %>
