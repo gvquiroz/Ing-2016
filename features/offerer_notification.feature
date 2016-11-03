@@ -7,5 +7,7 @@ Feature: Offerer notification
   	Given only a "Web Programmer" offer exists in the offers list
 
   Scenario: A candidate applies to a job offer
-    When a candidate apply
-    Then I should receive an mail with candidate cv link
+    Given the candidate form is filled with "candidate@gmail.com"
+    When candidate applies an offer
+    Then I should receive an email from "infojobvacancy2016@gmail.com"
+    And I should see "candidate@gmail.com" in the email body

@@ -11,7 +11,6 @@ Feature: Activation notification
     When I fill the title with "Ruby Jr"
     And I fill the Due Date "2016-10-11"
     And confirm the new offer
-    And I access the my offer page
-    When I activate
+    And I access the my offers page
     Then I should receive an email from "infojobvacancy2016@gmail.com"
     And I should see "Offer Reactivated" in the email subject

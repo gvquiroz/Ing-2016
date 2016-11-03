@@ -8,5 +8,7 @@ Feature: Job Application
 
   Scenario: Apply to job offer
     Given I access the offers list page
-    When I apply
-    Then I should receive a mail with offerer info
+    And the candidate form is filled with "candidate@gmail.com"
+    When candidate applies an offer
+    Then I should receive an email from "infojobvacancy2016@gmail.com"
+    And I should see "offerer@gmail.com" in the email body
