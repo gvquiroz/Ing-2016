@@ -46,17 +46,31 @@ JobVacancy::App.mailer :notification do
     to job_application.applicant_email
     subject 'Job Application: Contact information'
     locals :job_offer => job_application.job_offer
-    content_type :plain
+    content_type :html
     render 'notification/contant_info_email'
   end
 
-    email :candidate_info_email do | job_application |
+  email :candidate_info_email do | job_application |
     from 'infojobvacancy2016@gmail.com'
     to job_application.job_offer.owner.email
     subject 'Job Application: Candidate information'
-    locals :job_offer => job_application.job_offer
-    content_type :plain
+    locals :job_offer => job_application.job_offer ,
+            :applicant_email => job_application.applicant_email,
+            :first_name => job_application.first_name,
+            :last_name => job_application.last_name,
+            :link_cv => job_application.link_cv,
+            :short_bio => job_application.short_bio
+    content_type :html
     render 'notification/candidate_info_email'
   end
 
+# content_type is html because it don't have problems with simbols
+  email :offer_reactivated_info_email do | job_reactivated |
+    from 'infojobvacancy2016@gmail.com'
+    to job_reactivated.job_offer.owner.email
+    subject 'Offer Reactivated'
+    locals :job_offer => job_reactivated.job_offer
+    content_type :html
+    render 'notification/offer_reactivated_info_email'
+  end
 end

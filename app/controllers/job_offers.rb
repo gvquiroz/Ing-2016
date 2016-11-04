@@ -42,13 +42,26 @@ JobVacancy::App.controllers :job_offers do
 
   post :apply, :with => :offer_id do
     @job_offer = JobOffer.get(params[:offer_id])
+    @job_application = JobApplication.new
+
     applicant_email = params[:job_application][:applicant_email]
-    @job_application = JobApplication.create_for(applicant_email, @job_offer)
-    @job_application.process
-    flash[:success] = 'Contact information sent.'
-    redirect '/job_offers'
+    first_name = params[:job_application][:first_name]
+    last_name = params[:job_application][:last_name]
+    link = params[:job_application][:link_cv]
+    short_bio = params[:job_application][:short_bio]
+
+    if (first_name.blank? || last_name.blank? || applicant_email.blank?) || (link.blank? && short_bio.blank?)
+      flash.now[:error] = 'Please complete the required fields'
+      render 'job_offers/apply'
+    else
+      @job_application = JobApplication.create_for(applicant_email, @job_offer, first_name, last_name, link, short_bio)
+      @job_application.process
+      flash[:success] = 'Contact information sent.'
+      redirect '/job_offers'
+    end
   end
 
+#This code might be better
   post :create do
     @job_offer = JobOffer.new(params[:job_offer])
     @job_offer.owner = current_user
@@ -58,8 +71,14 @@ JobVacancy::App.controllers :job_offers do
       end
       flash[:success] = 'Offer created'
       redirect '/job_offers/my'
-    else
+    elsif params[:job_offer][:title].length == 0
       flash.now[:error] = 'Title is mandatory'
+      render 'job_offers/new'
+    elsif params[:job_offer][:location].length == 0
+      flash.now[:error] = 'Location is mandatory'
+      render 'job_offers/new'
+    elsif params[:job_offer][:due_date].length == 0
+      flash.now[:error] = 'Date is mandatory'
       render 'job_offers/new'
     end
   end
@@ -67,11 +86,18 @@ JobVacancy::App.controllers :job_offers do
   post :update, :with => :offer_id do
     @job_offer = JobOffer.get(params[:offer_id])
     @job_offer.update(params[:job_offer])
+    JobOffer.activate_if_needed
     if @job_offer.save
       flash[:success] = 'Offer updated'
       redirect '/job_offers/my'
-    else
+    elsif params[:job_offer][:title].length == 0
       flash.now[:error] = 'Title is mandatory'
+      render 'job_offers/edit'
+    elsif params[:job_offer][:location].length == 0
+      flash.now[:error] = 'Location is mandatory'
+      render 'job_offers/edit'
+    elsif params[:job_offer][:due_date].length == 0
+      flash.now[:error] = 'Date is mandatory'
       render 'job_offers/edit'
     end
   end
@@ -80,7 +106,9 @@ JobVacancy::App.controllers :job_offers do
     @job_offer = JobOffer.get(params[:offer_id])
     @job_offer.activate
     if @job_offer.save
-      flash[:success] = 'Offer activated'
+      @job_reactivated = JobApplication.create_for_activate(@job_offer)
+      @job_reactivated.offer_reactivated_email
+      flash[:success] = 'Offer reactivated for 30 days'
       redirect '/job_offers/my'
     else
       flash.now[:error] = 'Operation failed'

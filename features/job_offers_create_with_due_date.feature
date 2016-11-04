@@ -6,9 +6,10 @@ Feature: Job Offers Due Date
   Background:
   	Given I am logged in as job offerer
 
-  Scenario: Create new offer whith Due Date
+  Scenario: Create new offer with Due Date
     Given I access the new offer page
     When I fill the title with "Ruby vacancy"
+    And I fill the location with "Nuñez"
     And I fill the Due Date "2016-11-11"
 		And confirm the new offer
     Then I should see "Offer created"

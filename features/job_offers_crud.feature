@@ -9,7 +9,9 @@ Feature: Job Offers CRUD
   Scenario: Create new offer
     Given I access the new offer page
     When I fill the title with "Programmer vacancy"
-		And confirm the new offer    
+    And I fill the location with "San Telmo"
+    And I fill the Due Date "2016-11-11"
+		And confirm the new offer
     Then I should see "Offer created"
     And I should see "Programmer vacancy" in My Offers
 

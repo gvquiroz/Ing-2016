@@ -6,13 +6,15 @@ class JobOffer
 	property :title, String
 	property :location, String
 	property :description, String
-  property :created_on, Date
-  property :updated_on, Date
+ 	property :created_on, Date
+ 	property :updated_on, Date
 	property :due_date, Date
-  property :is_active, Boolean, :default => true
+  	property :is_active, Boolean, :default => true
 	belongs_to :user
 
 	validates_presence_of :title
+	validates_presence_of :location
+	validates_presence_of :due_date
 
 	def owner
 		user
@@ -28,6 +30,7 @@ class JobOffer
 	end
 
 	def self.find_by_owner(user)
+		JobOffer.deactivate_old_offers
 		JobOffer.all(:user => user)
 	end
 
@@ -40,12 +43,28 @@ class JobOffer
 		end
 	end
 
+	def self.activate_if_needed
+		due_offers = JobOffer.all(:due_date.gt => Date.today)
+		due_offers.each do | offer |
+			offer.is_active = true
+			offer.save
+		end
+	end
+
 	def activate
 		self.is_active = true
+		self.due_date = Date.today+30
 	end
 
 	def deactivate
 		self.is_active = false
 	end
 
+	def validate?(date)
+		if(date.match(/\d{4}-\d{2}-\d{2}/) && Date.strptime(date, '%Y-%m-%d'))
+			return true
+		else
+			return false
+		end
+	end
 end
