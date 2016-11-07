@@ -13,11 +13,6 @@ Given(/^Today's date "(.*?)"$/) do | date_today |
   date = date_today
 end
 
-When(/^I activate$/) do
-  click_button('Activate')
-end
-
-
 Then(/^I you should see the new day with an extra month in My Offers$/) do
   new_date = Date.today+30
   page.should have_content(new_date)
@@ -41,6 +36,10 @@ Given(/^a "(.*?)" offer has pass the due date$/) do | job_title |
   @job_offer.due_date = 2016-10-10
   @job_offer.is_active = false
   @job_offer.save
+end
+
+When(/^I activate$/) do
+  pending # express the regexp above with the code you wish you had
 end
 
 Given(/^I access the offers list page$/) do
