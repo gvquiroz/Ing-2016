@@ -13,4 +13,4 @@ Feature: Activation notification
     And confirm the new offer
     And I access the my offers page
     Then I should receive an email from "infojobvacancy2016@gmail.com"
-    And I should see "Offer Reactivated" in the email subject
+    And I should see "Offer Reactivated from offer Offer" in the email subject
