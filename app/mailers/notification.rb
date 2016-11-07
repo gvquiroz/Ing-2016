@@ -44,7 +44,7 @@ JobVacancy::App.mailer :notification do
   email :contact_info_email do | job_application |
     from 'infojobvacancy2016@gmail.com'
     to job_application.applicant_email
-    subject 'Job Application: Contact information'
+    subject "Job Application: Contact information from offer: #{job_application.job_offer.title}"
     locals :job_offer => job_application.job_offer
     content_type :html
     render 'notification/contant_info_email'
@@ -53,7 +53,7 @@ JobVacancy::App.mailer :notification do
   email :candidate_info_email do | job_application |
     from 'infojobvacancy2016@gmail.com'
     to job_application.job_offer.owner.email
-    subject 'Job Application: Candidate information'
+    subject "Job Application: Candidate information from offer: #{job_application.job_offer.title}"
     locals :job_offer => job_application.job_offer ,
             :applicant_email => job_application.applicant_email,
             :first_name => job_application.first_name,
@@ -68,7 +68,7 @@ JobVacancy::App.mailer :notification do
   email :offer_reactivated_info_email do | job_reactivated |
     from 'infojobvacancy2016@gmail.com'
     to job_reactivated.job_offer.owner.email
-    subject 'Offer Reactivated'
+    subject "Offer Reactivated from offer: #{job_application.job_offer.title}"
     locals :job_offer => job_reactivated.job_offer
     content_type :html
     render 'notification/offer_reactivated_info_email'
