@@ -29,16 +29,13 @@
 
 		<td>
 			<%= link_to 'Edit', url_for(:job_offers, :edit, :offer_id => offer.id), :title =>"Edit offer" ,:class => "btn btn-primary" %>
-			<%- form_tag url(:job_offers, :destroy, :offer_id => offer.id), :method => :delete, :style => 'display:inline' do %>
-    				<button type='submit' title="Delete offer" rel='tooltip' class="btn btn-secondary" >Delete
-            		</button>
-       <% end %>
-       <% if not offer.is_active %>
+			<%= link_to 'Delete', url_for(:job_offers, :delete_confirmation, :offer_id => offer.id), :title =>"Confirm to Delete" ,:class => "btn btn-primary" %>
+			<% if not offer.is_active %>
 				<%- form_tag url(:job_offers, :activate, :offer_id => offer.id), :method => :put, :style => 'display:inline' do %>
-	                <button type='submit' title="Activate for 30 days from now" rel='tooltip' class="btn btn-secondary" >Activate
-	                </button>
-	       <% end %>
-       <% end %>
+	          <button type='submit' title="Activate for 30 days from now" rel='tooltip' class="btn btn-secondary" >Activate
+	          </button>
+	    	<% end %>
+      <% end %>
 		</td>
 	</tr>
 

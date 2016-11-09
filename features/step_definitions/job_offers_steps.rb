@@ -50,7 +50,13 @@ Given(/^I edit it$/) do
   click_link('Edit')
 end
 
-And(/^I delete it$/) do
+And(/^I delete$/) do
+  click_link('Delete')
+  visit '/job_offers/delete_confirmation'
+end
+
+And(/^I confirm delete$/) do
+  visit '/job_offers/delete_confirmation'
   click_button('Delete')
 end
 
