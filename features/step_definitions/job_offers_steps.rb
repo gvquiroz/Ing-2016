@@ -52,12 +52,17 @@ end
 
 And(/^I delete$/) do
   click_link('Delete')
+end
+
+Then(/^I should see "(.*?)" in Delete Confirmation$/) do |content|
+  pending
   visit '/job_offers/delete_confirmation'
+  page.should have_content(content)
 end
 
 And(/^I confirm delete$/) do
   visit '/job_offers/delete_confirmation'
-  click_button('Delete')
+  click_on('Delete')
 end
 
 Given(/^I set title to "(.*?)"$/) do |new_title|
