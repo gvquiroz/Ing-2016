@@ -29,6 +29,17 @@ class JobOffer
 		JobOffer.all(:is_active => true)
 	end
 
+	def self.search_by_title (search_tittle)
+		active_offers = JobOffer.all_active
+		offers = Array.new
+		active_offers.each do |	offer |
+			if offer.title.downcase.include? search_tittle.downcase
+			offers.push(offer)
+			end
+		end
+		offers
+	end
+
 	def self.find_by_owner(user)
 		JobOffer.deactivate_old_offers
 		JobOffer.all(:user => user)
