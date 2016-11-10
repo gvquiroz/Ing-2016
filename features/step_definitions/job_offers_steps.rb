@@ -51,6 +51,15 @@ Given(/^I edit it$/) do
 end
 
 And(/^I delete it$/) do
+  click_link('Delete')
+end
+
+Then(/^I should see "(.*?)" in Delete Confirmation$/) do |content|
+  visit '/job_offers/delete_confirmation'
+  page.should have_content(content)
+end
+
+And(/^I confirm delete$/) do
   click_button('Delete')
 end
 
