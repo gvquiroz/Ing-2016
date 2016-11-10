@@ -1,8 +1,16 @@
   <%= f.label :title, :caption => "Title *" %>
- 	<%= f.text_field :title, :class => "input-block-level" %>
+  <%= f.text_field :title, :class => "input-block-level" %>
   <%= f.label :location, :caption => "Location *"%>
   <%= f.text_field :location, :class => "input-block-level" %>
-	<%= f.label :due_date , :caption => "Due date *"%>
+  <%= f.label :due_date , :caption => "Due date *"%>
+  <script src="http://cdn.jsdelivr.net/webshim/1.12.4/extras/modernizr-custom.js"></script>
+  <!-- polyfiller file to detect and load polyfills -->
+  <script src="http://cdn.jsdelivr.net/webshim/1.12.4/polyfiller.js"></script>
+  <script>
+    webshims.setOptions('waitReady', false);
+    webshims.setOptions('forms-ext', {types: 'date'});
+    webshims.polyfill('forms forms-ext');
+  </script>
   <input id="date" name="job_offer[due_date]" type="date" min="2015-01-01" max="2060-01-01"/>
   <%= f.label :description, :caption => "Description"%>
   <%= f.text_area :description, :class => "input-block-level" %>
