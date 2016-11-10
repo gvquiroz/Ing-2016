@@ -39,8 +39,7 @@ JobVacancy::App.controllers :job_offers do
   end
 
   post :search do
-    @active_offers = JobOffer.all_active
-    @offers = @active_offers.all(:title.like => "%#{params[:q]}%")
+    @offers = JobOffer.search_by_title(params[:q])
     render 'job_offers/list'
   end
 
