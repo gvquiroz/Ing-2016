@@ -26,6 +26,11 @@ JobVacancy::App.controllers :job_offers do
     render 'job_offers/edit'
   end
 
+  get :delete_confirmation, :with =>:offer_id  do
+    @job_offer = JobOffer.get(params[:offer_id])
+    render 'job_offers/delete_confirmation'
+  end
+
   get :apply, :with =>:offer_id  do
     @job_offer = JobOffer.get(params[:offer_id])
     @job_application = JobApplication.new
@@ -34,11 +39,17 @@ JobVacancy::App.controllers :job_offers do
   end
 
   post :search do
-    @active_offers = JobOffer.all_active
-    @offers = @active_offers.all(:title.like => "%#{params[:q]}%")
+    @offers = JobOffer.search_by_title(params[:q])
     render 'job_offers/list'
   end
 
+  delete :delete_confirmation, :with => :offer_id do
+    @job_offer = JobOffer.get(params[:offer_id])
+    @job_offer.destroy
+    flash[:success] = 'Offer deleted'
+    redirect 'job_offers/my'
+    
+  end
 
   post :apply, :with => :offer_id do
     @job_offer = JobOffer.get(params[:offer_id])

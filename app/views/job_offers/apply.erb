@@ -1,4 +1,5 @@
 <h1>Job Application</h1>
+<h4><%=@job_offer.title%> in <%=@job_offer.location%>.<h4>
 
 
 <h5>Please complete to apply for this offer.</h5>
@@ -6,7 +7,6 @@
 <% form_for(@job_application, "/job_offers/apply/#{@job_offer.id}") do |f| %>
 
 <p>Full Name *</p>
-
 <DIV ALIGN=left><%= f.text_field :first_name, placeholder: "First Name *" %>
                 <%= f.text_field :last_name, placeholder: "Last Name *" %></DIV>
 
@@ -14,7 +14,7 @@
 <%= f.label :applicant_email, :caption => "Email Address *"%>
 <%= f.email_field :applicant_email, placeholder: "applicant@example.com", :class => 'long'%>
 
-<p>Enter a link to your cv or write a short bio</p>
+<p>Enter a Link to your CV or write a Short Bio</p>
 
 <%= f.label :link_cv, :caption => "Link CV"%>
 <%= f.url_field :link_cv, :class => 'long'%>

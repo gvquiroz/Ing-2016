@@ -11,4 +11,5 @@ Feature: Job Application
     And the candidate form is filled with "candidate@gmail.com"
     When candidate applies an offer
     Then I should receive an email from "infojobvacancy2016@gmail.com"
+    And I should see "Job Application: Candidate information from offer: the tittle of the offer" in the email subject
     And I should see "offerer@gmail.com" in the email body

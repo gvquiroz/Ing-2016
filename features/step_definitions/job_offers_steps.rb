@@ -51,6 +51,15 @@ Given(/^I edit it$/) do
 end
 
 And(/^I delete it$/) do
+  click_link('Delete')
+end
+
+Then(/^I should see "(.*?)" in Delete Confirmation$/) do |content|
+  visit '/job_offers/delete_confirmation'
+  page.should have_content(content)
+end
+
+And(/^I confirm delete$/) do
   click_button('Delete')
 end
 
@@ -66,4 +75,30 @@ end
 
 When(/^I fill the Due Date "(.*?)"$/) do |date|
   fill_in('job_offer[due_date]', :with => date)
+end
+
+Given(/^two offers exist in the offers list with tittle "(.*?)" and "(.*?)"$/) do |arg1, arg2|
+  JobOffer.all.destroy
+  visit '/job_offers/new'
+  fill_in('job_offer[title]', :with => "Senior Web Programmer")
+  fill_in('job_offer[location]', :with => "Villa Urquiza")
+  fill_in('job_offer[due_date]', :with => "2018-10-10")
+  click_button('Create')
+    visit '/job_offers/new'
+  fill_in('job_offer[title]', :with => "SENIOR Java Programmer")
+  fill_in('job_offer[location]', :with => "Villa Urquiza")
+  fill_in('job_offer[due_date]', :with => "2018-10-10")
+  click_button('Create')
+end
+
+When(/^I fill the search box with "(.*?)"$/) do |arg1|
+  pending # express the regexp above with the code you wish you had
+end
+
+When(/^confirm the search$/) do
+  click_button('search-button')
+end
+
+Then(/^I should see "(.*?)" And "(.*?)" in the list$/) do |arg1, arg2|
+  pending # express the regexp above with the code you wish you had
 end

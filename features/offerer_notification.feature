@@ -10,4 +10,5 @@ Feature: Offerer notification
     Given the candidate form is filled with "candidate@gmail.com"
     When candidate applies an offer
     Then I should receive an email from "infojobvacancy2016@gmail.com"
-    And I should see "candidate@gmail.com" in the email body
+    And I should see "Job Application: Contact information from offer: job offer tittle" in the email subject
+    And I should see "the title, location and description of the offer" in the email body

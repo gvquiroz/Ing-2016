@@ -25,6 +25,7 @@ Feature: Job Offers CRUD
 
   Scenario: Delete offer
     Given I have "Programmer vacancy" offer in My Offers
-    Given I delete it
+    And I delete it
+    And I confirm delete
     Then I should see "Offer deleted"
-    And I should not see "Programmer vacancy!!!" in My Offers
+    And I should not see "Programmer vacancy" in My Offers
