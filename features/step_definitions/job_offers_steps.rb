@@ -23,9 +23,18 @@ When(/^I fill the location with "(.*?)"$/) do |offer_location|
   fill_in('job_offer[location]', :with => offer_location)
 end
 
+When(/^I fill the description with "(.*?)"$/) do |offer_description|
+  fill_in('job_offer[description]', :with => offer_description)
+end
+
 When(/^confirm the new offer$/) do
   click_button('Create')
 end
+
+And (/^candidate click moreInfo button$/) do
+  click_link('offer')
+end
+
 
 Then(/^I should see "(.*?)" in My Offers$/) do |content|
 	visit '/job_offers/my'
