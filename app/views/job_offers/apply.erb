@@ -1,8 +1,14 @@
 <h1>Job Application</h1>
-<h4><%=@job_offer.title%> in <%=@job_offer.location%>.<h4>
+<DIV ALIGN=left><h5><%=@job_offer.title%> in <%=@job_offer.location%>
+  <a href="#" onclick="change('ejemplo'); return false;">...</a><h5></DIV>
 
+  <div id="ejemplo" style="display: none;">
+    <h6>Title: <%=@job_offer.title%><br>
+    Location: <%=@job_offer.location%><br>
+    Description: <%=@job_offer.description%><br><h6>
+  </div>
 
-<h5>Please complete to apply for this offer.</h5>
+<h5>Please complete to apply for this offer</h5>
 <br>
 <% form_for(@job_application, "/job_offers/apply/#{@job_offer.id}") do |f| %>
 
