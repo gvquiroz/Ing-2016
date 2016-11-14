@@ -1,8 +1,8 @@
 <h1>Job Application</h1>
 <DIV ALIGN=left><h5><%=@job_offer.title%> in <%=@job_offer.location%>
-  <a href="#" onclick="change('ejemplo'); return false;">...</a><h5></DIV>
+  <a href="#" onclick="moreInfo('offer'); return false;">...</a><h5></DIV>
 
-  <div id="ejemplo" style="display: none;">
+  <div id="offer" style="display: none;">
     <h6>Title: <%=@job_offer.title%><br>
     Location: <%=@job_offer.location%><br>
     Description: <%=@job_offer.description%><br><h6>

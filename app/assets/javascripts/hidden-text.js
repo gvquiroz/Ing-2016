@@ -1,10 +1,10 @@
-function change(esto)
+function moreInfo(thisOffer)
 {
-	vista=document.getElementById(esto).style.display;
-	if (vista=='none')
-		vista='block';
+	view=document.getElementById(thisOffer).style.display;
+	if (view=='none')
+		view='block';
 	else
-		vista='none';
+		view='none';
 
-	document.getElementById(esto).style.display = vista;
+	document.getElementById(thisOffer).style.display = view;
 }
