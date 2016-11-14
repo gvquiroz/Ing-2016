@@ -111,3 +111,16 @@ end
 Then(/^I should see "(.*?)" And "(.*?)" in the list$/) do |arg1, arg2|
   pending # express the regexp above with the code you wish you had
 end
+
+Given(/^candidate click on apply for "(.*?)"$/) do |arg1|
+  pending
+end
+
+When(/^I access my offers list page$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
+When(/^I should see "(.*?)" in "(.*?)" offer$/) do |arg1, arg2|
+  pending # express the regexp above with the code you wish you had
+end
+

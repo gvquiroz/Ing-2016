@@ -9,6 +9,7 @@ class JobOffer
  	property :created_on, Date
  	property :updated_on, Date
 	property :due_date, Date
+	property :applies, Integer, :default => 0
   	property :is_active, Boolean, :default => true
 	belongs_to :user
 
@@ -60,6 +61,11 @@ class JobOffer
 			offer.is_active = true
 			offer.save
 		end
+	end
+
+	def add_one_apply
+		self.applies += 1
+		self.save
 	end
 
 	def activate
