@@ -2,8 +2,8 @@ And(/^a candidate click apply$/) do
   click_link ('Apply')
 end
 
-When(/^candidate confirm job application$/) do
-  pending
+And(/^candidate confirm job application$/) do
+  click_link ('Apply')
 end
 
 Then(/^I should receive a mail with offerer info$/) do
@@ -23,7 +23,6 @@ Given(/^the candidate form is filled with "(.*?)"$/) do | candidate_email |
   visit '/job_offers/apply'
   @job_application = JobApplication.new
   @job_application.create_for(candidate_email, @job_offer, 'Kent','Beck','https://kentbeckblog.com','Programmer')
-
 end
 
 Then(/^I should receive an email from "(.*?)"$/) do | job_vacancy_email |

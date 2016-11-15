@@ -15,6 +15,7 @@ describe JobOffer do
 		it { should respond_to( :created_on) }
 		it { should respond_to( :updated_on ) }
 		it { should respond_to( :due_date ) }
+		it { should respond_to( :candidates ) }
 		it { should respond_to( :applies ) }
 		it { should respond_to( :is_active) }
 
@@ -91,4 +92,16 @@ describe JobOffer do
 		end
 	end
 
+	describe 'candidates_counter' do
+		let(:job_offer) { JobOffer.new }
+
+		it 'should have 0 candidates when no one applied' do
+			expect(job_offer.candidates).to eq 0
+		end
+
+		it 'should have 1 candidate when someone have send applicant email' do
+			job_offer.add_one_candidate
+			expect(job_offer.candidates).to eq 1
+		end
+	end
 end
