@@ -14,5 +14,5 @@ Background:
     And I fill the Due Date "2017-11-11"
     And confirm the new offer
     And I access the offers list page
-    And candidate applies an offer
+    And a candidate click apply
     Then I should see "Ruby vacancy in Nuñez"

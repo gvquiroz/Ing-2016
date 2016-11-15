@@ -1,4 +1,4 @@
-Feature: More job info in Apply 
+Feature: More job info in Apply
 In order to get a job
 As a candidate
 I want to see more information supply when I apply to an offer
@@ -15,7 +15,7 @@ Background:
     And I fill the Due Date "2017-12-25"
     And confirm the new offer
     And I access the offers list page
-    And candidate applies an offer
+    And a candidate click apply
     And candidate click moreInfo button
     Then I should see "Ruby vacancy"
     And I should see "Nuñez"

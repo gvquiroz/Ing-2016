@@ -7,6 +7,7 @@ Feature: Job Offer Apply Counter
   	Given only a "Web Programmer" offer exists in the offers list
 
   Scenario: I see how many users apply on an offer
-    Given candidate click on apply for "Web Programmer"
-    When I access my offers list page 
-    And I should see "1" in "Web Programmer" offer
+    Given I access the offers list page
+    And a candidate click apply
+    When I access the offers list page
+    And I should see "1" in My Offers
