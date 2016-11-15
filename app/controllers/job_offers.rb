@@ -49,7 +49,7 @@ JobVacancy::App.controllers :job_offers do
     @job_offer.destroy
     flash[:success] = 'Offer deleted'
     redirect 'job_offers/my'
-    
+
   end
 
   post :apply, :with => :offer_id do
@@ -68,6 +68,7 @@ JobVacancy::App.controllers :job_offers do
     else
       @job_application = JobApplication.create_for(applicant_email, @job_offer, first_name, last_name, link, short_bio)
       @job_application.process
+      @job_offer.add_one_candidate
       flash[:success] = 'Contact information sent.'
       redirect '/job_offers'
     end

@@ -7,6 +7,7 @@
 		<th>Is active</th>
 		<th>Due Date</th>
 		<th>Number of applies</th>
+		<th>Number of candidates</th>
 		<th>Actions</th>
 	</tr>
 	<% @offers.each do | offer| %>
@@ -29,6 +30,9 @@
 		</td>
 		<td>
 			<%= offer.applies %>
+		</td>
+		<td>
+			<%= offer.candidates %>
 		</td>
 		<td>
 			<%= link_to 'Edit', url_for(:job_offers, :edit, :offer_id => offer.id), :title =>"Edit offer" ,:class => "btn btn-primary" %>
