@@ -15,6 +15,7 @@ describe JobOffer do
 		it { should respond_to( :created_on) }
 		it { should respond_to( :updated_on ) }
 		it { should respond_to( :due_date ) }
+		it { should respond_to( :applies ) }
 		it { should respond_to( :is_active) }
 
 	end
@@ -69,4 +70,25 @@ describe JobOffer do
 			expect(old_offer.is_active).to eq true
 		end
 	end
+
+	describe 'applies_counter' do
+		let(:job_offer) { JobOffer.new }
+
+		it 'should have 0 applies when its new' do
+			expect(job_offer.applies).to eq 0
+		end
+
+		it 'should have 1 applies when someone applies' do
+			job_offer.add_one_apply
+			expect(job_offer.applies).to eq 1
+		end
+
+		it 'should have 3 applies when someone applies three times' do
+			job_offer.add_one_apply
+			job_offer.add_one_apply
+			job_offer.add_one_apply
+			expect(job_offer.applies).to eq 3
+		end
+	end
+
 end
