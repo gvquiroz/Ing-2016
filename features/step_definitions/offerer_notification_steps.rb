@@ -18,11 +18,24 @@ Then(/^I should receive a mail with offerer info$/) do
   content.include?(@job_offer.owner.name).should be true
 end
 
+And(/^a candidate has applied offer$/) do
+  pending
+  visit '/job_offers/apply'
+  fill_in('job_application[first_name]', :with => 'Kent')
+  fill_in('job_application[last_name]', :with => 'Del Rio')
+  fill_in('job_application[applicant_email]', :with => 'candidate@email.com')
+  fill_in('job_application[link_cv]', :with => 'http://delrioblog.com')
+  click_button('Apply')
+end
+
+
 Given(/^the candidate form is filled with "(.*?)"$/) do | candidate_email |
   pending
   visit '/job_offers/apply'
-  @job_application = JobApplication.new
-  @job_application.create_for(candidate_email, @job_offer, 'Kent','Beck','https://kentbeckblog.com','Programmer')
+  fill_in('job_application[first_name]', :with => 'Kent')
+  fill_in('job_application[last_name]', :with => 'Beck')
+  fill_in('job_application[applicant_email]', :with => candidate_email)
+  fill_in('job_application[link_cv]', :with => 'http://kentbeckblog.com')
 end
 
 Then(/^I should receive an email from "(.*?)"$/) do | job_vacancy_email |
