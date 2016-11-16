@@ -4,10 +4,10 @@
 		<th>Title</th>
 		<th>Location</th>
 		<th>Description</th>
-		<th>Is active</th>
+		<th WIDTH=55>Is active</th>
 		<th>Due Date</th>
-		<th>Number of applies</th>
-		<th>Number of candidates</th>
+		<th WIDTH=50>Number of applies</th>
+		<th WIDTH=50>Number of candidates</th>
 		<th>Actions</th>
 	</tr>
 	<% @offers.each do | offer| %>
@@ -43,6 +43,9 @@
 	          </button>
 	    	<% end %>
       <% end %>
+			<% if offer.candidates > 0 %>
+				<%= link_to 'Candidates', url_for(:job_offers, :candidates, :offer_id => offer.id), :title =>"Candidates list" ,:class => "btn btn-secondary" %>
+			<% end %>
 		</td>
 	</tr>
 

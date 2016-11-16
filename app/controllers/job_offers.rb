@@ -26,6 +26,12 @@ JobVacancy::App.controllers :job_offers do
     render 'job_offers/edit'
   end
 
+  get :candidates, :with =>:offer_id  do
+    @job_offer = JobOffer.get(params[:offer_id])
+    @candidates = JobCandidate.find_by_offer(@job_offer)
+    render 'job_offers/candidates_list'
+  end
+
   get :delete_confirmation, :with =>:offer_id  do
     @job_offer = JobOffer.get(params[:offer_id])
     render 'job_offers/delete_confirmation'
@@ -66,8 +72,11 @@ JobVacancy::App.controllers :job_offers do
       flash.now[:error] = 'Please complete the required fields'
       render 'job_offers/apply'
     else
+      @candidates = JobCandidate.new(params[:job_application])
+      @candidates.offer_applied = @job_offer
       @job_application = JobApplication.create_for(applicant_email, @job_offer, first_name, last_name, link, short_bio)
       @job_application.process
+      @candidates.save
       @job_offer.add_one_candidate
       flash[:success] = 'Contact information sent.'
       redirect '/job_offers'
