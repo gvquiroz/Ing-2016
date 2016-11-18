@@ -1,5 +1,5 @@
 <h1>My Job Offers</h1>
-<div class="table table-bordered" type="sortable">
+<div class="table table-bordered">
 <table class="sortable">
 	<tr>
 		<th>Title</th>
@@ -14,27 +14,14 @@
 	<% @offers.each do | offer| %>
 
 	<tr>
-		<td>
-			<%= offer.title %>
-		</td>
-		<td>
-			<%= offer.location %>
-		</td>
-		<td>
-			<%= offer.description %>
-		</td>
-		<td>
-			<%= offer.is_active %>
-		</td>
-		<td>
-			<%= offer.due_date %>
-		</td>
-		<td>
-			<%= offer.applies %>
-		</td>
-		<td>
-			<%= offer.candidates %>
-		</td>
+		<td><%= offer.title %></td>
+		<td><%= offer.location %></td>
+		<td><%= offer.description %></td>
+		<td><%= offer.is_active %></td>
+		<td><%= offer.due_date %></td>
+		<td><%= offer.applies %></td>
+		<td><%= offer.candidates %></td>
+
 		<td>
 			<%= link_to 'Edit', url_for(:job_offers, :edit, :offer_id => offer.id), :title =>"Edit offer" ,:class => "btn btn-primary" %>
 			<%= link_to 'Delete', url_for(:job_offers, :delete_confirmation, :offer_id => offer.id), :title =>"Confirm to Delete" ,:class => "btn btn-primary" %>
@@ -51,7 +38,6 @@
 	</tr>
 
   <% end %>
-
 
 </table>
 </div>

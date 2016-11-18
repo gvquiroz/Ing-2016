@@ -2017,10 +2017,12 @@ table {
 
 .table th {
   font-weight: bold;
+  text-align: center;;
+  vertical-align: middle;
 }
-
 .table thead th {
-  vertical-align: bottom;
+  text-align: center;;
+  vertical-align: middle;
 }
 
 .table caption + thead tr:first-child th,
