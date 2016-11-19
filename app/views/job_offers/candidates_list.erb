@@ -1,11 +1,13 @@
 <h1>Candidates for <%=@job_offer.title%></h1>
-<table class="table table-bordered">
+<div class="table table-bordered">
+	<table class="sortable">
+
 	<tr>
 		<th>Last Name</th>
-		<th>First Name</th>
-		<th>Email Address</th>
-		<th>Link CV</th>
-		<th>Short Bio</th>
+		<th class="sorttable_nosort">First Name</th>
+		<th class="sorttable_nosort">Email Address</th>
+		<th class="sorttable_nosort">Link CV</th>
+		<th class="sorttable_nosort">Short Bio</th>
 	</tr>
 
 	<% @candidates.each do | candidate| %>
@@ -20,3 +22,4 @@
 	<% end %>
 
 </table>
+</div>
