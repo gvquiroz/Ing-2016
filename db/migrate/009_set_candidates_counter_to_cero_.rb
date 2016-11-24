@@ -1,4 +1,4 @@
-migration 12, :set_candidates_counter_to_zero do
+migration 9, :set_candidates_counter_to_zero do
   up do
     offers = JobOffer.all
     offers.each do | offer |

@@ -5,6 +5,9 @@ migration 2, :create_job_offers do
       column :title, DataMapper::Property::String, :length => 255
       column :location, DataMapper::Property::String, :length => 255
       column :description, DataMapper::Property::String, :length => 255
+      column :due_date, DataMapper::Property::Date
+      column :candidates, DataMapper::Property::Integer
+      column :applies, DataMapper::Property::Integer
     end
   end
 

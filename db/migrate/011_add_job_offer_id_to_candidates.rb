@@ -1,4 +1,4 @@
-migration 14, :add_job_offer_id_to_job_candidates do
+migration 11, :add_job_offer_id_to_job_candidates do
   up do
     modify_table :job_candidates do
       add_column :job_offer_id, Integer
