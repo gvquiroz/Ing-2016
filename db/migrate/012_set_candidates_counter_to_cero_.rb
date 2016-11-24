@@ -8,5 +8,8 @@ migration 12, :set_candidates_counter_to_zero do
   end
 
   down do
+  	modify_table :job_offers do
+      drop_column :candidates
+    end
   end
 end
