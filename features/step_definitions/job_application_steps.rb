@@ -39,7 +39,7 @@ Given(/^a "(.*?)" offer has pass the due date$/) do | job_title |
 end
 
 When(/^I activate$/) do
-  pending # express the regexp above with the code you wish you had
+    pending # express the regexp above with the code you wish you had
 end
 
 Given(/^I access the offers list page$/) do

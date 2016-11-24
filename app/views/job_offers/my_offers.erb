@@ -1,31 +1,26 @@
 <h1>My Job Offers</h1>
-<table class="table table-bordered">
+<div class="table table-bordered">
+<table class="sortable">
 	<tr>
-		<th>Title</th>
-		<th>Location</th>
-		<th>Description</th>
-		<th>Is active</th>
-		<th>Due Date</th>
-		<th>Actions</th>
+		<th><font color="blue">Title</font></th>
+		<th><font color="blue">Location</font></th>
+		<th><font color="blue">Description</font></th>
+		<th WIDTH=35><font color="blue">Is active</font></th>
+		<th WIDTH=74><font color="blue">Due Date</font></th>
+		<th WIDTH=50><font color="blue">Number of applies</font></th>
+		<th WIDTH=50><font color="blue">Number of candidates</font></th>
+		<th class="sorttable_nosort">Actions</th>
 	</tr>
 	<% @offers.each do | offer| %>
 
 	<tr>
-		<td>
-			<%= offer.title %>
-		</td>
-		<td>
-			<%= offer.location %>
-		</td>
-		<td>
-			<%= offer.description %>
-		</td>
-		<td>
-			<%= offer.is_active %>
-		</td>
-		<td>
-			<%= offer.due_date %>
-		</td>
+		<td><%= offer.title %></td>
+		<td><%= offer.location %></td>
+		<td><%= offer.description %></td>
+		<td><%= offer.is_active %></td>
+		<td><%= offer.due_date %></td>
+		<td><%= offer.applies %></td>
+		<td><%= offer.candidates %></td>
 
 		<td>
 			<%= link_to 'Edit', url_for(:job_offers, :edit, :offer_id => offer.id), :title =>"Edit offer" ,:class => "btn btn-primary" %>
@@ -36,10 +31,13 @@
 	          </button>
 	    	<% end %>
       <% end %>
+			<% if offer.candidates > 0 %>
+				<%= link_to 'Candidates', url_for(:job_offers, :candidates, :offer_id => offer.id), :title =>"Candidates list" ,:class => "btn btn-secondary" %>
+			<% end %>
 		</td>
 	</tr>
 
   <% end %>
 
-
 </table>
+</div>

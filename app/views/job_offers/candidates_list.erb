@@ -1,0 +1,25 @@
+<h1>Candidates for <%=@job_offer.title%></h1>
+<div class="table table-bordered">
+	<table class="sortable">
+
+	<tr>
+		<th><font color="blue">Last Name</font></th>
+		<th><font color="blue">First Name</font></th>
+		<th><font color="blue">Email Address</font></th>
+		<th><font color="blue">Link CV</font></th>
+		<th><font color="blue">Short Bio</font></th>
+	</tr>
+
+	<% @candidates.each do | candidate| %>
+
+	<tr>
+		<td><%= candidate.last_name %></td>
+		<td><%= candidate.first_name %></td>
+		<td><%= candidate.applicant_email %></td>
+		<td><%= candidate.link_cv %></td>
+		<td><%= candidate.short_bio %></td>
+	</tr>
+	<% end %>
+
+</table>
+</div>

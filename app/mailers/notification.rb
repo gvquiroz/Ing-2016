@@ -68,7 +68,7 @@ JobVacancy::App.mailer :notification do
   email :offer_reactivated_info_email do | job_reactivated |
     from 'infojobvacancy2016@gmail.com'
     to job_reactivated.job_offer.owner.email
-    subject "#{job_application.job_offer.title} was Reactivated"
+    subject "#{job_reactivated.job_offer.title} was Reactivated"
     locals :job_offer => job_reactivated.job_offer
     content_type :html
     render 'notification/offer_reactivated_info_email'

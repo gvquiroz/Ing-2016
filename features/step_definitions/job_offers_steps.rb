@@ -23,9 +23,18 @@ When(/^I fill the location with "(.*?)"$/) do |offer_location|
   fill_in('job_offer[location]', :with => offer_location)
 end
 
+When(/^I fill the description with "(.*?)"$/) do |offer_description|
+  fill_in('job_offer[description]', :with => offer_description)
+end
+
 When(/^confirm the new offer$/) do
   click_button('Create')
 end
+
+And (/^candidate click moreInfo button$/) do
+  click_link('offer')
+end
+
 
 Then(/^I should see "(.*?)" in My Offers$/) do |content|
 	visit '/job_offers/my'
@@ -84,21 +93,36 @@ Given(/^two offers exist in the offers list with tittle "(.*?)" and "(.*?)"$/) d
   fill_in('job_offer[location]', :with => "Villa Urquiza")
   fill_in('job_offer[due_date]', :with => "2018-10-10")
   click_button('Create')
-    visit '/job_offers/new'
+  visit '/job_offers/new'
   fill_in('job_offer[title]', :with => "SENIOR Java Programmer")
   fill_in('job_offer[location]', :with => "Villa Urquiza")
   fill_in('job_offer[due_date]', :with => "2018-10-10")
   click_button('Create')
 end
 
-When(/^I fill the search box with "(.*?)"$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
-end
-
 When(/^confirm the search$/) do
   click_button('search-button')
 end
 
+And (/^I access to see candidates$/) do
+  click_button('candidates')
+end
+
+Then (/^I should see "(.*?)" in candidates page$/) do |candidate_last_name|
+  visit '/job_offers/candidates_list'
+  page.should have_content(candidate_last_name)
+end
+
+
+When(/^I fill the search box with "(.*?)"$/) do |arg1|
+  pending # express the regexp above with the code you wish you had
+end
+
+
 Then(/^I should see "(.*?)" And "(.*?)" in the list$/) do |arg1, arg2|
   pending # express the regexp above with the code you wish you had
+end
+
+Given(/^candidate click on apply for "(.*?)"$/) do |arg1|
+  pending
 end
