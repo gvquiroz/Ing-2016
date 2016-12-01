@@ -1,4 +1,5 @@
-[![Build Status](https://snap-ci.com/gvquiroz/Ing-2016/branch/master/build_image)](https://snap-ci.com/gvquiroz/Ing-2016/branch/master)
+Master [![Build Status](https://snap-ci.com/gvquiroz/Ing-2016/branch/master/build_image)](https://snap-ci.com/gvquiroz/Ing-2016/branch/master)
+Staging [![Build Status](https://snap-ci.com/gvquiroz/Ing-2016/branch/master/build_image)](https://snap-ci.com/gvquiroz/Ing-2016/branch/develop)
 
 Job Vacancy Application
 =======================
@@ -17,5 +18,4 @@ Some conventions to work on it:
 * Write code and comments in English
 * Use REST routes
 
-Forked from Nico Paez 
 Untref Software Engineering 2016.
