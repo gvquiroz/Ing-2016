@@ -1,5 +1,5 @@
 Master [![Build Status](https://snap-ci.com/gvquiroz/Ing-2016/branch/master/build_image)](https://snap-ci.com/gvquiroz/Ing-2016/branch/master)
-Staging [![Build Status](https://snap-ci.com/gvquiroz/Ing-2016/branch/master/build_image)](https://snap-ci.com/gvquiroz/Ing-2016/branch/develop)
+ | Staging [![Build Status](https://snap-ci.com/gvquiroz/Ing-2016/branch/master/build_image)](https://snap-ci.com/gvquiroz/Ing-2016/branch/develop)
 
 Job Vacancy Application
 =======================
