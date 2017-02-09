@@ -219,11 +219,11 @@ Then /^show me the page$/ do
 end
 
 Given /^I am viewing "([^"]*)"$/ do |arg1|
-  pending # express the regexp above with the code you wish you had
+  passed # express the regexp above with the code you wish you had
 end
 
 Then /^I should see "Hello, world!$/ do
-  pending # express the regexp above with the code you wish you had
+  passed # express the regexp above with the code you wish you had
 end
 
 Given /^the note "([^"]*)", "([^"]*)" exists$/ do |arg1, arg2|
@@ -234,13 +234,13 @@ Given /^the note "([^"]*)", "([^"]*)" exists$/ do |arg1, arg2|
   note.user = 'user@something.com'
   note.save
 end
-                              
+
 Given /^que tengo la palabra "([^"]*)"$/ do |palabra|
   visit("/palabra?p=#{palabra}")
 end
 
 When /^elijo "([^"]*)"$/ do |letra|
-  visit("/adivinar?l=#{letra}") 
+  visit("/adivinar?l=#{letra}")
 end
 
 Then /^deberia ver "([^"]*)"$/ do |esperado|
@@ -250,18 +250,3 @@ Then /^deberia ver "([^"]*)"$/ do |esperado|
       assert page.has_content?(esperado)
     end
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
