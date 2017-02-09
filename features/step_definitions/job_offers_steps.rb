@@ -115,14 +115,14 @@ end
 
 
 When(/^I fill the search box with "(.*?)"$/) do |arg1|
-  passed # express the regexp above with the code you wish you had
+  pending # express the regexp above with the code you wish you had
 end
 
 
 Then(/^I should see "(.*?)" And "(.*?)" in the list$/) do |arg1, arg2|
-  passed # express the regexp above with the code you wish you had
+  pending # express the regexp above with the code you wish you had
 end
 
 Given(/^candidate click on apply for "(.*?)"$/) do |arg1|
-  passed
+  pending
 end

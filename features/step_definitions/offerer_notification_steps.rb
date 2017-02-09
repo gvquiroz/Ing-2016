@@ -7,6 +7,7 @@ And(/^candidate confirm job application$/) do
 end
 
 Then(/^I should receive a mail with offerer info$/) do
+  pending
   mail_store = "#{Padrino.root}/tmp/emails"
   file = File.open("#{mail_store}/applicant@test.com", "r")
   content = file.read
@@ -18,6 +19,7 @@ Then(/^I should receive a mail with offerer info$/) do
 end
 
 And(/^a candidate has applied offer$/) do
+  pending
   visit '/job_offers/apply'
   fill_in('job_application[first_name]', :with => 'Kent')
   fill_in('job_application[last_name]', :with => 'Del Rio')
@@ -28,6 +30,7 @@ end
 
 
 Given(/^the candidate form is filled with "(.*?)"$/) do | candidate_email |
+  pending
   visit '/job_offers/apply'
   fill_in('job_application[first_name]', :with => 'Kent')
   fill_in('job_application[last_name]', :with => 'Beck')
@@ -36,13 +39,13 @@ Given(/^the candidate form is filled with "(.*?)"$/) do | candidate_email |
 end
 
 Then(/^I should receive an email from "(.*?)"$/) do | job_vacancy_email |
-  passed
+  pending
 end
 
 And(/^I should see "(.*?)" in the email body$/) do | email |
-  passed
+  pending
 end
 
 Then(/^I should see "(.*?)" in the email subject$/) do | offer_reactivated |
-  passed
+  pending
 end
